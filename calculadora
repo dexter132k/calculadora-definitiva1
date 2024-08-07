@@ -1,1 +1,64 @@
+class Calculadora:
+    def __init__(self):
+        self.resultado = 0
+
+    def adicionar(self, valor):
+        self.resultado = valor
+        return self.resultado
+
+    def subtrair(self, valor):
+        self.resultado = valor
+        return self.resultado
+
+    def multiplicar(self, valor):
+        self.resultado = valor
+        return self.resultado
+
+    def dividir(self, valor):
+        if valor != 0:
+            self.resultado = valor
+        else:
+            return "Erro: Divisão por zero"
+        return self.resultado
+
+    def calcular(self, operacao, valor):
+        if operacao == 'adicionar':
+            return self.adicionar(valor)
+        elif operacao == 'subtrair':
+            return self.subtrair(valor)
+        elif operacao == 'multiplicar':
+            return self.multiplicar(valor)
+        elif operacao == 'dividir':
+            return self.dividir(valor)
+        else:
+            return "Operação inválida"
+
+# Função principal para interação com o usuário
+def main():
+    calc = Calculadora()
+    
+    while True:
+        print("\nEscolha a operação:")
+        print("1: Adicionar")
+        print("2: Subtrair")
+        print("3: Multiplicar")
+        print("4: Dividir")
+        print("5: Sair")
+        
+        escolha = input("Digite o número da operação desejada: ")
+        
+        if escolha == '5':
+            print("Saindo...")
+            break
+        
+        if escolha in ['1', '2', '3', '4']:
+            valor = float(input("Digite o valor: "))
+            operacoes = {'1': 'adicionar', '2': 'subtrair', '3': 'multiplicar', '4': 'dividir'}
+            resultado = calc.calcular(operacoes[escolha], valor)
+            print(f"Resultado: {resultado}")
+        else:
+            print("Escolha inválida. Tente novamente.")
+
+if __name__ == "__main__":
+    main()
 
